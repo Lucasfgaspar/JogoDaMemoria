@@ -1,16 +1,15 @@
 /*
- * Create a list that holds all of your cards
+ * Crie uma lista que contenha todos os seus cartões
  */
-
 
 /*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
+ * Exibir os cartões na página
+ * - embaralhe a lista de cartões usando o método "shuffle" fornecido abaixo
+ * - percorra cada cartão e crie seu HTML
+ * - adicione o HTML de cada cartão à página
  */
 
-// Shuffle function from http://stackoverflow.com/a/2450976
+// Função aleatória http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -25,14 +24,18 @@ function shuffle(array) {
     return array;
 }
 
+$('.card').on('click', function(evt){
+    $(evt.target).toggleClass('open');
+    $(evt.target).toggleClass('show');
+});
 
 /*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+ * Configure o ouvinte de eventos para um cartão. Se um cartão for clicado:
+ * - exibe o símbolo do cartão (coloque esta funcionalidade em outra função que você chama deste)
+ * - adicione o cartão a uma * lista * de cartões "abertos" (coloque esta funcionalidade em outra função que você chama desta)
+ * - se a lista já tiver outro cartão, verifique se os dois cartões correspondem
+ * + se os cartões coincidirem, bloqueie os cartões na posição aberta (coloque esta funcionalidade em outra função que você chama desta)
+ * + se os cartões não coincidirem, remova os cartões da lista e oculte o símbolo do cartão (coloque esta funcionalidade em outra função que você chama deste)
+ * + incrementa o contador de movimentos e exibe-o na página (coloca essa funcionalidade em outra função que você chama desta)
+ * + se todos os cartões tiverem correspondido, exibir uma mensagem com a pontuação final (colocar essa funcionalidade em outra função que você chama a partir desta)
  */
