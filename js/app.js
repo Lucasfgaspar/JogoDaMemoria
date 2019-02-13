@@ -10,6 +10,11 @@
  */
 
 // Função aleatória http://stackoverflow.com/a/2450976
+
+let listaCard = []; 
+let carta = $('.card');
+let cartas = [...carta];
+
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -24,10 +29,11 @@ function shuffle(array) {
     return array;
 }
 
-$('.card').on('click', function(evt){
-    $(evt.target).toggleClass('open');
-    $(evt.target).toggleClass('show');
+//mostrar as cartas após um clique
+carta.click(function(evt){
+    $(evt.target).toggleClass('open show');
 });
+
 
 /*
  * Configure o ouvinte de eventos para um cartão. Se um cartão for clicado:
