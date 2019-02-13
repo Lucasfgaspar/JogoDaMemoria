@@ -13,7 +13,7 @@
 
 let jogadas = 0;
 let carta = $('.card');
-let cartas = [...carta];
+
 
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -32,12 +32,23 @@ function shuffle(array) {
 //mostrar as cartas após um clique e aumenta o numero de jogadas
 carta.click(function(evt){
     $(evt.target).toggleClass('open show');
+    aumentarJogadas();
+    removerEstrela();
+});
+
+//função aumenta o numero de jogadas
+function aumentarJogadas(){
     jogadas++;
     let vezjogadas = $('.moves');
     vezjogadas.text(jogadas);
-});
+}
 
-
+function removerEstrela(){
+    let estrelas = $('.fa-star');
+    if(jogadas === 20 || jogadas === 26){
+        $(estrelas[estrelas.length-1]).toggleClass('fa-star fa-star-o');
+    }
+}
 
 
 /*
