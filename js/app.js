@@ -11,7 +11,7 @@
 
 // Função aleatória http://stackoverflow.com/a/2450976
 
-let listaCard = []; 
+let jogadas = 0;
 let carta = $('.card');
 let cartas = [...carta];
 
@@ -29,10 +29,15 @@ function shuffle(array) {
     return array;
 }
 
-//mostrar as cartas após um clique
+//mostrar as cartas após um clique e aumenta o numero de jogadas
 carta.click(function(evt){
     $(evt.target).toggleClass('open show');
+    jogadas++;
+    let vezjogadas = $('.moves');
+    vezjogadas.text(jogadas);
 });
+
+
 
 
 /*
