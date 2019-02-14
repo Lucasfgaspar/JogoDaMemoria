@@ -15,6 +15,8 @@ let jogadas = 0;
 let carta = $('.card');
 
 
+console.log(cartas)
+
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -35,6 +37,7 @@ carta.click(function(evt){
     aumentarJogadas();
     removerEstrela();
 });
+//clique no deck, selecionar cartas
 
 //função aumenta o numero de jogadas
 function aumentarJogadas(){
@@ -42,14 +45,17 @@ function aumentarJogadas(){
     let vezjogadas = $('.moves');
     vezjogadas.text(jogadas);
 }
-
+//função para remover estrelas
 function removerEstrela(){
     let estrelas = $('.fa-star');
     if(jogadas === 20 || jogadas === 26){
         $(estrelas[estrelas.length-1]).toggleClass('fa-star fa-star-o');
     }
 }
-
+//restart de jogo
+$('.fa-repeat').click(function(){
+    location.reload();
+});
 
 /*
  * Configure o ouvinte de eventos para um cartão. Se um cartão for clicado:
