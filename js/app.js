@@ -98,13 +98,16 @@ function combCorreta(){
         cartasAbertas[i].addClass('match disabled');
     }
     cartasAbertas = [];
+    pares++;
 }
 //se cartas forem erradas retirar classes 'open show'
 function combErrada(){
-    for(let i=0; i<cartasAbertas.length; i++){
-        cartasAbertas[i].toggleClass('open show disabled');
-    }
-    cartasAbertas = [];
+    setTimeout(function(){
+        for(let i=0; i<cartasAbertas.length; i++){
+            cartasAbertas[i].toggleClass('open show disabled no-event');
+        }
+        cartasAbertas = [];
+    }, 700);  
 }
 
 /*
