@@ -15,6 +15,7 @@ let jogadas = 0;
 let carta = $('.card');
 let cartas = [...carta];
 let cartasAbertas = [];
+let pares = 0;
 
 //embaralhar cartas
 function embaralharCartas(){
@@ -44,7 +45,7 @@ function shuffle(array) {
 
 //mostrar as cartas após um clique e aumenta o numero de jogadas
 carta.click(function(evt){
-    $(evt.target).toggleClass('open show');
+    $(evt.target).toggleClass('open show disabled');
     aumentarJogadas();
     removerEstrela();
 });
