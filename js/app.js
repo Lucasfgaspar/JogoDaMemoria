@@ -22,7 +22,7 @@ function embaralharCartas(){
     for(var i=0; i<cartas.length; i++) {
         $(".deck").innerHTML = "";
         [].forEach.call(cartas, function(item) {
-            document.querySelector(".deck").appendChild(item);
+            $(".deck").append(item);
         });
     }
 }
