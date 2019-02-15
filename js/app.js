@@ -15,9 +15,18 @@ let jogadas = 0;
 let carta = $('.card');
 let cartas = [...carta];
 let cartasAbertas = [];
-let deck = $('.deck');
 
-console.log(cartas)
+//embaralhar cartas
+function embaralharCartas(){
+    cartas = shuffle(cartas);
+    for(var i=0; i<cartas.length; i++) {
+        $(".deck").innerHTML = "";
+        [].forEach.call(cartas, function(item) {
+            document.querySelector(".deck").appendChild(item);
+        });
+    }
+}
+embaralharCartas();
 
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -38,27 +47,6 @@ carta.click(function(evt){
     $(evt.target).toggleClass('open show');
     aumentarJogadas();
     removerEstrela();
-});
-//clique no deck, selecionar cartas
-deck.click(function(evt){
-    cartasAbertas.push($(evt.target).children[0]);
-    console.log(cartasAbertas);
-    alert($(evt.target).children[0].class);
-    if (cartasAbertas.length === 2){
-        let carta1 = cartasAbertas[0];
-        let carta2 = cartasAbertas[1];
-
-        if (carta1 === carta2){
-            cartasAbertas.forEach(function(carta){
-                $(evt.target).toggleClass('match disable');
-            });
-        } else {
-            cartasAbertas.forEach(function(carta){
-                $(evt.target).toggleClass('open show');
-            });            
-        }
-        cartasAbertas = [];
-    }
 });
 //função aumenta o numero de jogadas
 function aumentarJogadas(){
