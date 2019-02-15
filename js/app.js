@@ -16,6 +16,7 @@ let carta = $('.card');
 let cartas = [...carta];
 let cartasAbertas = [];
 let pares = 0;
+let deck = $('.deck');
 
 //embaralhar cartas
 function embaralharCartas(){
@@ -46,8 +47,16 @@ function shuffle(array) {
 //mostrar as cartas após um clique e aumenta o numero de jogadas
 carta.click(function(evt){
     $(evt.target).toggleClass('open show disabled');
+    cartasAbertas.push($(evt.target));
     aumentarJogadas();
     removerEstrela();
+
+    if (cartasAbertas.length === 2){
+        testarComb();
+    }
+    console.log(cartasAbertas);
+    
+    
 });
 //função aumenta o numero de jogadas
 function aumentarJogadas(){
@@ -66,6 +75,37 @@ function removerEstrela(){
 $('.fa-repeat').click(function(){
     location.reload();
 });
+//
+function obterImagemCarta(carta){
+    return carta[0].firstChild.nextSibling.classList[1];
+}
+//testar combinação das cartas
+function testarComb(){
+    if (cartasAbertas.length === 2){
+        let carta1 = obterImagemCarta(cartasAbertas[0]);
+        let carta2 = obterImagemCarta(cartasAbertas[1]);
+
+        if (carta1 === carta2){
+            combCorreta();
+        } else {
+            combErrada();
+        }
+    }
+}  
+//se cartas forem iguais atribuir classe 'match disable'
+function combCorreta(){
+    for(let i=0; i<cartasAbertas.length; i++) {
+        cartasAbertas[i].addClass('match disabled');
+    }
+    cartasAbertas = [];
+}
+//se cartas forem erradas retirar classes 'open show'
+function combErrada(){
+    for(let i=0; i<cartasAbertas.length; i++){
+        cartasAbertas[i].toggleClass('open show disabled');
+    }
+    cartasAbertas = [];
+}
 
 /*
  * Configure o ouvinte de eventos para um cartão. Se um cartão for clicado:
