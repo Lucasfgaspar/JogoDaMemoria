@@ -93,6 +93,14 @@ h1 {
 	animation-duration: .75s;
 }
 
+.deck .card.erro {
+	animation-name: pulse;
+	-webkit-backface-visibility: visible;
+	backface-visibility: visible;
+	animation-duration: .75s;
+	background: #e2043b;
+}
+
 .deck .card.disabled {
 	pointer-events: none;
 }
@@ -174,6 +182,20 @@ h1 {
 
 	75% {
 		transform: scale3d(1.05, .95, 1);
+	}
+
+	to {
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+@keyframes pulse {
+	from {
+		transform: scale3d(1, 1, 1);
+	}
+
+	50% {
+		transform: scale3d(1.2, 1.2, 1.2);
 	}
 
 	to {

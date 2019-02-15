@@ -86,7 +86,7 @@ function testarComb(){
         let carta2 = obterImagemCarta(cartasAbertas[1]);
 
         if (carta1 === carta2){
-            combCorreta();
+            combCorreta();        
         } else {
             combErrada();
         }
@@ -102,13 +102,19 @@ function combCorreta(){
 }
 //se cartas forem erradas retirar classes 'open show'
 function combErrada(){
+    for(let i=0; i<cartasAbertas.length; i++){
+        cartasAbertas[i].toggleClass('erro');
+    }
     setTimeout(function(){
         for(let i=0; i<cartasAbertas.length; i++){
-            cartasAbertas[i].toggleClass('open show disabled no-event');
+            cartasAbertas[i].toggleClass('open show erro disabled');
         }
         cartasAbertas = [];
-    }, 700);  
+    }, 1000); 
+        
 }
+
+
 
 /*
  * Configure o ouvinte de eventos para um cartão. Se um cartão for clicado:
