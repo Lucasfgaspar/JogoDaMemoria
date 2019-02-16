@@ -34,9 +34,10 @@ h1 {
 }
 
 .show{
-    visibility: visible !important;
-    opacity: 1 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
+
 /*
  * Styles for the deck of cards
  */
@@ -130,6 +131,37 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+#alerta-vitoria {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0,0,0,0.7);
+	visibility: hidden;
+}
+
+#alerta-vitoria .alerta {
+	background: white;
+	margin: 20px;
+	padding: 40px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+#alerta-vitoria h2{
+  margin:0;
+}
+
+#alerta-vitoria .resultado {
+	margin: 40px 0;
+	font-size: 1.25rem;
 }
 
 /* animações */

@@ -17,12 +17,13 @@ let cartas = [...carta];
 let cartasAbertas = [];
 let pares = 0;
 let deck = $('.deck');
+let alerta = $('#alerta-vitoria');
 
 //embaralhar cartas
 function embaralharCartas(){
     cartas = shuffle(cartas);
     for(var i=0; i<cartas.length; i++) {
-        $(".deck").innerHTML = "";
+        $(".deck").text = "";
         [].forEach.call(cartas, function(item) {
             $(".deck").append(item);
         });
@@ -50,13 +51,8 @@ carta.click(function(evt){
     cartasAbertas.push($(evt.target));
     aumentarJogadas();
     removerEstrela();
-
-    if (cartasAbertas.length === 2){
-        testarComb();
-    }
-    console.log(cartasAbertas);
-    
-    
+    testarComb();
+    fimJogo();    
 });
 //função aumenta o numero de jogadas
 function aumentarJogadas(){
@@ -99,6 +95,7 @@ function combCorreta(){
     }
     cartasAbertas = [];
     pares++;
+   
 }
 //se cartas forem erradas retirar classes 'open show'
 function combErrada(){
@@ -114,6 +111,11 @@ function combErrada(){
         
 }
 
+function fimJogo(){
+    if (pares == 8){
+        alerta.addClass('show');
+    }    
+}
 
 
 /*
