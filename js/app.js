@@ -110,10 +110,13 @@ function combErrada(){
     }, 1000); 
         
 }
-
+//tela de dim de jogo
 function fimJogo(){
     if (pares == 8){
         alerta.addClass('show');
+        $('#reiniciar').click(function(){
+            location.reload();
+        });
     }    
 }
 
