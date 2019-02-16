@@ -67,7 +67,7 @@ function aumentarJogadas(){
 //função para remover estrelas
 function removerEstrela(){
     let estrelas = $('.fa-star');
-    if(jogadas === 20 || jogadas === 26){
+    if(jogadas === 20 || jogadas === 26 || jogadas === 32 || jogadas === 38){
         $(estrelas[estrelas.length-1]).toggleClass('fa-star fa-star-o');
     }
 }
