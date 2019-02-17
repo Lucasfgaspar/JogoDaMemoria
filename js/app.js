@@ -19,6 +19,7 @@ let pares = 0;
 let deck = $('.deck');
 let alerta = $('#alerta-vitoria');
 
+
 //embaralhar cartas
 function embaralharCartas(){
     cartas = shuffle(cartas);
