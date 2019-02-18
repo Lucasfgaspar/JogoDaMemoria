@@ -1,16 +1,4 @@
-/*
- * Crie uma lista que contenha todos os seus cartões
- */
-
-/*
- * Exibir os cartões na página
- * - embaralhe a lista de cartões usando o método "shuffle" fornecido abaixo
- * - percorra cada cartão e crie seu HTML
- * - adicione o HTML de cada cartão à página
- */
-
-// Função aleatória http://stackoverflow.com/a/2450976
-
+//declarações
 let jogadas = 0;
 let carta = $('.card');
 let cartas = [...carta];
@@ -18,7 +6,11 @@ let cartasAbertas = [];
 let pares = 0;
 let deck = $('.deck');
 let alerta = $('#alerta-vitoria');
-
+let intervalo;
+let mins = $('.mins');
+let segs = $('.segs');
+let segundos = 0;
+let minutos = 0;
 
 //embaralhar cartas
 function embaralharCartas(){
@@ -46,12 +38,13 @@ function shuffle(array) {
     return array;
 }
 
-//mostrar as cartas após um clique e aumenta o numero de jogadas
+//ouvinte de clique das cartas, e chamada das funções do jogo.
 carta.click(function(evt){
     $(evt.target).toggleClass('open show disabled');
     cartasAbertas.push($(evt.target));
     aumentarJogadas();
     removerEstrela();
+    tempo();
     testarComb();
     fimJogo();    
 });
@@ -111,6 +104,21 @@ function combErrada(){
     }, 1000); 
         
 }
+//tempo
+function tempo() {
+	if(jogadas == 1) {
+		intervalo = setInterval(function() {
+			segundos++;
+			if(segundos == 60) {
+				minutos++;
+                segundos= 0;
+                mins.text(minutos);
+			}
+			segs.text(segundos);
+		}, 1000);
+	}
+}
+
 //tela de dim de jogo
 function fimJogo(){
     if (pares == 8){
