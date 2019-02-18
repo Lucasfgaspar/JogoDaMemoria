@@ -126,19 +126,8 @@ function fimJogo(){
         $('#reiniciar').click(function(){
             location.reload();
         });
+        clearInterval(intervalo);
     } 
     let crono = `${minutos} mins ${segundos} segs`;
-    $('#crono').text(crono);   
+    $('#crono').text(crono);       
 }
-
-
-/*
- * Configure o ouvinte de eventos para um cartão. Se um cartão for clicado:
- * - exibe o símbolo do cartão (coloque esta funcionalidade em outra função que você chama deste)
- * - adicione o cartão a uma * lista * de cartões "abertos" (coloque esta funcionalidade em outra função que você chama desta)
- * - se a lista já tiver outro cartão, verifique se os dois cartões correspondem
- * + se os cartões coincidirem, bloqueie os cartões na posição aberta (coloque esta funcionalidade em outra função que você chama desta)
- * + se os cartões não coincidirem, remova os cartões da lista e oculte o símbolo do cartão (coloque esta funcionalidade em outra função que você chama deste)
- * + incrementa o contador de movimentos e exibe-o na página (coloca essa funcionalidade em outra função que você chama desta)
- * + se todos os cartões tiverem correspondido, exibir uma mensagem com a pontuação final (colocar essa funcionalidade em outra função que você chama a partir desta)
- */
