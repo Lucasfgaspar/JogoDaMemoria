@@ -126,7 +126,9 @@ function fimJogo(){
         $('#reiniciar').click(function(){
             location.reload();
         });
-    }    
+    } 
+    let crono = `${minutos} mins ${segundos} segs`;
+    $('#crono').text(crono);   
 }
 
 
