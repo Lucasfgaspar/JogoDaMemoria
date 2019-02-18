@@ -90,8 +90,8 @@ h1 {
     font-size: 33px;
     animation-name: flip;
     -webkit-backface-visibility: visible;
-	backface-visibility: visible;
-	animation-duration: .75s;
+	  backface-visibility: visible;
+	  animation-duration: .75s;
 }
 
 .deck .card.erro {

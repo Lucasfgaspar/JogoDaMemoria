@@ -57,7 +57,7 @@ function aumentarJogadas(){
 //função para remover estrelas
 function removerEstrela(){
     let estrelas = $('.fa-star');
-    if(jogadas === 20 || jogadas === 26 || jogadas === 32 || jogadas === 38){
+    if(jogadas === 22 || jogadas === 28 || jogadas === 34 || jogadas === 40){
         $(estrelas[estrelas.length-1]).toggleClass('fa-star fa-star-o');
     }
 }
@@ -128,6 +128,7 @@ function fimJogo(){
         });
         clearInterval(intervalo);
     } 
+    
     let crono = `${minutos} mins ${segundos} segs`;
     $('#crono').text(crono);       
 }
