@@ -44,6 +44,7 @@ carta.click(function(evt){
     cartasAbertas.push($(evt.target));
     aumentarJogadas();
     removerEstrela();
+    removerEstrelaModal();
     tempo();
     testarComb();
     fimJogo();    
@@ -56,7 +57,13 @@ function aumentarJogadas(){
 }
 //função para remover estrelas
 function removerEstrela(){
-    let estrelas = $('.fa-star');
+    let estrelas = $('.estrela-tela');
+    if(jogadas === 22 || jogadas === 28 || jogadas === 34 || jogadas === 40){
+        $(estrelas[estrelas.length-1]).toggleClass('fa-star fa-star-o');
+    }
+}
+function removerEstrelaModal(){
+    let estrelas = $('.estrela-modal');
     if(jogadas === 22 || jogadas === 28 || jogadas === 34 || jogadas === 40){
         $(estrelas[estrelas.length-1]).toggleClass('fa-star fa-star-o');
     }

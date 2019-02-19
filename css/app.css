@@ -165,6 +165,7 @@ h1 {
 }
 
 /* animações */
+/*Animações retiradas do site animate.css*/
 @keyframes flipInY {
 	from {
 		transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
