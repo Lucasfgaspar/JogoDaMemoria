@@ -39,14 +39,16 @@ function shuffle(array) {
 }
 //ouvinte de clique das cartas, e chamada das funções do jogo.
 carta.click(function(evt){
-    $(evt.target).toggleClass('open show disabled');
-    cartasAbertas.push($(evt.target));
+    if (cartasAbertas.length < 2){
+        $(evt.target).toggleClass('open show disabled');
+        cartasAbertas.push($(evt.target));
+    } 
+    testarComb();
     aumentarJogadas();
     removerEstrela();
     removerEstrelaModal();
-    tempo();
-    testarComb();
-    fimJogo();   
+    tempo();   
+    fimJogo();  
 });
 //função aumenta o numero de jogadas
 function aumentarJogadas(){
@@ -62,9 +64,9 @@ function removerEstrela(){
     }
 }
 function removerEstrelaModal(){
-    let estrelasModal = $('.estrela-modal');
+    let estrelas = $('.estrela-modal');
     if(jogadas === 22 || jogadas === 28 || jogadas === 34 || jogadas === 40){
-        $(estrelasModal[estrelasModal.length-1]).toggleClass('estrela-modal fa-star fa-star-o');
+        $(estrelas[estrelas.length-1]).toggleClass('estrela-modal fa-star fa-star-o');
     }
 }
 //restart de jogo
@@ -78,7 +80,6 @@ function obterImagemCarta(carta){
 //testar combinação das cartas
 function testarComb(){
     if (cartasAbertas.length === 2){
-        
         let carta1 = obterImagemCarta(cartasAbertas[0]);
         let carta2 = obterImagemCarta(cartasAbertas[1]);
         
@@ -97,18 +98,31 @@ function combCorreta(){
         cartasAbertas[i].addClass('match disabled');
     }
     cartasAbertas = [];
-    pares++;  
+    pares++; 
+}
+//desabilitar as cartas apos duas estarem abertas
+function desabilitar(){
+    for(let i=0; i<cartas.length; i++){
+        $('.card').addClass('disabled'); 
+    }
+}
+function habilitar(){
+    for(let i=0; i<cartas.length; i++){
+        $('.card').removeClass('disabled'); 
+    }
 }
 //se cartas forem erradas retirar classes 'open show'
 function combErrada(){
     for(let i=0; i<cartasAbertas.length; i++){
         cartasAbertas[i].addClass('erro');
     }
+    desabilitar();
     setTimeout(function(){
         for(let i=0; i<cartasAbertas.length; i++){
             cartasAbertas[i].toggleClass('open show erro disabled');
         }
-        cartasAbertas = [];               
+        cartasAbertas = [];
+        habilitar();               
     }, 1000);
 }
 //tempo
@@ -125,7 +139,6 @@ function tempo() {
 		}, 1000);
 	}
 }
-
 //tela de dim de jogo
 function fimJogo(){
     if (pares == 8){
