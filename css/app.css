@@ -163,6 +163,27 @@ h1 {
 	margin: 40px 0;
 	font-size: 1.25rem;
 }
+/***********************************/
+@media only screen and (max-width: 700px) {
+  .score-panel{
+    width: 90%;
+  }
+  .deck {
+    width: 95%;
+    padding: 16px;
+    min-height: 100vw;
+  }
+
+  .deck .card {
+    width: 17vw;
+    height: 17vw;
+  }
+
+  .score-panel {
+    font-size: 16px;
+  }
+  
+}
 
 /* animações */
 /*Animações retiradas do site animate.css*/
